@@ -1,0 +1,53 @@
+﻿<Window
+    x:Class="CustomAppointmentFlyoutExample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduling"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxschv="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/visual"
+    xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/themekeys"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Height="350"
+    Width="525"
+    mc:Ignorable="d"
+    Title="MainWindow">
+
+    <Window.Resources>
+        <DataTemplate x:Key="appointmentFlyoutContentTemplate">
+            <dxlc:LayoutControl Width="250" MinHeight="150" IsHitTestVisible="False" Orientation="Vertical" Padding="11">
+                <StackPanel Orientation="Vertical">
+                    <Border Height="5" Margin="1,0,1,-1" Panel.ZIndex="1" VerticalAlignment="Top" Background="{Binding StatusBrush}"/>
+                    <dxschv:DayAppointmentControl MinHeight="35"
+                        Panel.ZIndex="0"
+                        VerticalAlignment="Top"
+                        Content="{Binding}"
+                        ShowRecurrenceImage="True"
+                        ShowReminderImage="True"
+                        ShowStatus="False"
+                        Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=Appointment}}" />
+                </StackPanel>
+                <dxlc:LayoutControl Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Vertical" Padding="0">
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}" />
+                </dxlc:LayoutControl>
+                <dxlc:LayoutControl Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Vertical" Padding="0">
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Location}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Reminder}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Resources}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Description}}" />
+                </dxlc:LayoutControl>
+                <Image VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Source="{dx:DXImage Image=Apply_32x32.png}"
+                    Stretch="None" />
+            </dxlc:LayoutControl>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <dxsch:SchedulerControl x:Name="scheduler" FlyoutContentTemplate="{StaticResource appointmentFlyoutContentTemplate}" />
+    </Grid>
+
+</Window>
