@@ -13,12 +13,19 @@ Namespace CustomAppointmentFlyoutExample
         Public Sub New()
             InitializeComponent()
 
-            scheduler.AppointmentItems.Add(New AppointmentItem() With { _
-                .Start = Date.Now, _
-                .End = Date.Now.AddHours(2), _
-                .LabelId = 1, _
-                .StatusId = 1, _
-                .Subject = "TEST" _
+            scheduler.AppointmentItems.Add(New AppointmentItem() With {
+                .Start = Date.Now,
+                .End = Date.Now.AddHours(2),
+                .LabelId = 1,
+                .StatusId = 1,
+                .Subject = "TEST"
+            })
+            scheduler.AppointmentItems.Add(New AppointmentItem() With {
+                .Start = Date.Now.AddHours(1),
+                .End = Date.Now.AddHours(3),
+                .LabelId = 1,
+                .StatusId = 1,
+                .Subject = "TEST2"
             })
         End Sub
     End Class

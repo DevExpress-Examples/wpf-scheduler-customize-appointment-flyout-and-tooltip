@@ -6,16 +6,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduling"
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxschv="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/visual"
     xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/themekeys"
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-    Height="350"
-    Width="525"
+    Height="500"
+    Width="900"
     mc:Ignorable="d"
     Title="MainWindow">
 
     <Window.Resources>
-        <DataTemplate x:Key="appointmentFlyoutContentTemplate">
+        <DataTemplate x:Key="FlyoutTemplate">
             <dxlc:LayoutControl Width="250" MinHeight="150" IsHitTestVisible="False" Orientation="Vertical" Padding="11">
                 <StackPanel Orientation="Vertical">
                     <Border Height="5" Margin="1,0,1,-1" Panel.ZIndex="1" VerticalAlignment="Top" Background="{Binding StatusBrush}"/>
@@ -32,22 +33,39 @@
                     <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}" />
                     <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}" />
                 </dxlc:LayoutControl>
-                <dxlc:LayoutControl Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Vertical" Padding="0">
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Location}}" />
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Reminder}}" />
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Resources}}" />
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Description}}" />
-                </dxlc:LayoutControl>
                 <Image VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
                     Source="{dx:DXImage Image=Apply_32x32.png}"
                     Stretch="None" />
             </dxlc:LayoutControl>
         </DataTemplate>
+
+        <DataTemplate x:Key="TooltipTemplate">
+            <dxlc:LayoutControl IsHitTestVisible="False" Orientation="Vertical" Padding="11">
+                <TextBlock Text="{Binding Appointment.Subject}" FontWeight="Bold" FontSize="17" />
+                <dxlc:LayoutControl Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Vertical" Padding="0">
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}" />
+                </dxlc:LayoutControl>
+            </dxlc:LayoutControl>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
-        <dxsch:SchedulerControl x:Name="scheduler" FlyoutContentTemplate="{StaticResource appointmentFlyoutContentTemplate}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="ToolTipMode:" Margin="10,0" VerticalAlignment="Center"/>
+            <dxe:ComboBoxEdit VerticalAlignment="Center"
+                              ItemsSource="{dxe:EnumItemsSource EnumType=dxsch:ToolTipMode}"
+                              EditValue="{Binding ElementName=scheduler, Path=ToolTipMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+        <dxsch:SchedulerControl x:Name="scheduler"
+                                ToolTipContentTemplate="{StaticResource TooltipTemplate}"
+                                FlyoutContentTemplate="{StaticResource  FlyoutTemplate}" Grid.Row="1"/>
     </Grid>
 
 </Window>
