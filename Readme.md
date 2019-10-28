@@ -3,7 +3,7 @@
 
 * [MainWindow.xaml](./CS/CustomAppointmentFlyoutExample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/CustomAppointmentFlyoutExample/MainWindow.xaml))
 <!-- default file list end -->
-**#How to customize the appointment flyout or tooltip**
+#How to customize the appointment flyout or tooltip
 
 SchedulerControl can display additional information for appointments when the mouse pointer hovers over them. For this, it uses either the corresponding FlyoutControl or ToolTip elements. To define which element should be used for this purpose, use the [ToolTipMode](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.ToolTipMode) property.
 
