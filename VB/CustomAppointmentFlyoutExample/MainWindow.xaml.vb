@@ -1,19 +1,39 @@
-Imports DevExpress.Xpf.Scheduling
-Imports System.Drawing
+Imports DevExpress.Mvvm
+Imports System.Collections.ObjectModel
 Imports System.Windows
 
 Namespace CustomAppointmentFlyoutExample
 
-    ''' <summary>
-    ''' Interaction logic for MainWindow.xaml
-    ''' </summary>
     Public Partial Class MainWindow
         Inherits Window
 
         Public Sub New()
             Me.InitializeComponent()
-            Me.scheduler.AppointmentItems.Add(New AppointmentItem() With {.Start = Date.Now, .[End] = Date.Now.AddHours(2), .LabelId = 1, .StatusId = 1, .Subject = "TEST"})
-            Me.scheduler.AppointmentItems.Add(New AppointmentItem() With {.Start = Date.Now.AddHours(1), .[End] = Date.Now.AddHours(3), .LabelId = 1, .StatusId = 1, .Subject = "TEST2"})
+        End Sub
+    End Class
+
+    Public Class Appointment
+
+        Public Property ID As Integer
+
+        Public Property StartDate As Date?
+
+        Public Property EndDate As Date?
+
+        Public Property Subject As String
+
+        Public Property LabelId As Integer?
+
+        Public Property Notes As String
+    End Class
+
+    Public Class ViewModel
+        Inherits ViewModelBase
+
+        Public Property Appointments As ObservableCollection(Of Appointment)
+
+        Public Sub New()
+            Appointments = New ObservableCollection(Of Appointment) From {New Appointment With {.ID = 1, .StartDate = Date.Now, .EndDate = Date.Now.AddHours(1), .Subject = "Nancy Davolio", .LabelId = 7, .Notes = "Blood test results are required"}, New Appointment With {.ID = 2, .StartDate = Date.Now.AddHours(2), .EndDate = Date.Now.AddHours(4), .Subject = "Steven Buchanan", .LabelId = 3, .Notes = "Annual check-up"}, New Appointment With {.ID = 3, .StartDate = Date.Now.AddHours(5), .EndDate = Date.Now.AddHours(8), .Subject = "Mark Oliver", .LabelId = 1, .Notes = "First Visit"}}
         End Sub
     End Class
 End Namespace

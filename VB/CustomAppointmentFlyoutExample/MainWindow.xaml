@@ -9,11 +9,16 @@
     xmlns:dxschv="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/visual"
     xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/themekeys"
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+    xmlns:local="clr-namespace:CustomAppointmentFlyoutExample"
     Height="500"
     Width="900"
     mc:Ignorable="d"
     Title="MainWindow">
+
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
 
     <Window.Resources>
         <DataTemplate x:Key="FlyoutTemplate">
@@ -27,11 +32,12 @@
                         ShowRecurrenceImage="True"
                         ShowReminderImage="True"
                         ShowStatus="False"
-                        Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=Appointment}}" />
+                        Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=Appointment}}"/>
+                    <TextBlock Text="{Binding CustomFields[Notes]}" Margin="2,0,0,0"/>
                 </StackPanel>
                 <dxlc:LayoutControl Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Vertical" Padding="0">
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}" />
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}"/>
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}"/>
                 </dxlc:LayoutControl>
                 <Image VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
@@ -42,10 +48,11 @@
 
         <DataTemplate x:Key="TooltipTemplate">
             <dxlc:LayoutControl IsHitTestVisible="False" Orientation="Vertical" Padding="11">
-                <TextBlock Text="{Binding Appointment.Subject}" FontWeight="Bold" FontSize="17" />
+                <TextBlock Text="{Binding Appointment.Subject}" FontWeight="Bold" FontSize="17"/>
+                <TextBlock Text="{Binding CustomFields[Notes]}"/>
                 <dxlc:LayoutControl Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Vertical" Padding="0">
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}" />
-                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}" />
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_Start}}"/>
+                    <dxlc:LayoutItem Style="{DynamicResource {dxscht:SchedulerFlyoutThemeKey ResourceKey=LayoutItem_End}}"/>
                 </dxlc:LayoutControl>
             </dxlc:LayoutControl>
         </DataTemplate>
@@ -62,10 +69,24 @@
                               ItemsSource="{dxe:EnumItemsSource EnumType=dxsch:ToolTipMode}"
                               EditValue="{Binding ElementName=scheduler, Path=ToolTipMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
-        
-        <dxsch:SchedulerControl x:Name="scheduler"
+
+        <dxsch:SchedulerControl x:Name="scheduler" Grid.Row="1"
                                 ToolTipContentTemplate="{StaticResource TooltipTemplate}"
-                                FlyoutContentTemplate="{StaticResource  FlyoutTemplate}" Grid.Row="1"/>
+                                FlyoutContentTemplate="{StaticResource FlyoutTemplate}">
+            <dxsch:SchedulerControl.DataSource>
+                <dxsch:DataSource AppointmentsSource="{Binding Appointments}">
+                    <dxsch:DataSource.AppointmentMappings>
+                        <dxsch:AppointmentMappings Id="ID"
+                                                   Start="StartDate"
+                                                   End="EndDate"
+                                                   Subject="Subject"
+                                                   LabelId="LabelId">
+                            <dxsch:CustomFieldMapping Name="Notes" Mapping="Notes"/>
+                        </dxsch:AppointmentMappings>
+                    </dxsch:DataSource.AppointmentMappings>
+                </dxsch:DataSource>
+            </dxsch:SchedulerControl.DataSource>
+        </dxsch:SchedulerControl>
         
     </Grid>
 
