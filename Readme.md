@@ -10,7 +10,13 @@ The [DevExpress WPF Scheduler](https://docs.devexpress.com/WPF/114881/controls-a
 
 Use the [FlyoutContentTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.FlyoutContentTemplate) and [ToolTipContentTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.ToolTipContentTemplate) properties to customize the appearance of the `FlyoutControl` and `ToolTip` elements.
 
-![image](https://user-images.githubusercontent.com/65009440/219376802-c8e7d91f-9750-4130-bbdb-d8189c89ae06.png) ![image](https://user-images.githubusercontent.com/65009440/219376886-b52379dd-7619-474c-8437-a52cc1ee6e7e.png)
+`ToolTipMode="Flyout"`
+
+![image](https://user-images.githubusercontent.com/65009440/219376802-c8e7d91f-9750-4130-bbdb-d8189c89ae06.png)
+
+`ToolTipMode="ToolTip"`
+
+![image](https://user-images.githubusercontent.com/65009440/219376886-b52379dd-7619-474c-8437-a52cc1ee6e7e.png)
 
 ## Files to Review
 
