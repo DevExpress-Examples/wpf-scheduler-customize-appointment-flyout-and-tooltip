@@ -3,17 +3,21 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T584389)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
+
+# WPF Scheduler - Customize the Appointment Flyout and Tooltip
+
+The [DevExpress WPF Scheduler](https://docs.devexpress.com/WPF/114881/controls-and-libraries/scheduler) control can display additional information for appointments when the mouse pointer hovers over them. This information is shown in the `FlyoutControl` or `ToolTip` element. To define the displayed element, use the [ToolTipMode](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.ToolTipMode) property.
+
+Use the [FlyoutContentTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.FlyoutContentTemplate) and [ToolTipContentTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.ToolTipContentTemplate) properties to customize the appearance of the `FlyoutControl` and `ToolTip` elements.
+
+![image](https://user-images.githubusercontent.com/65009440/219376802-c8e7d91f-9750-4130-bbdb-d8189c89ae06.png) ![image](https://user-images.githubusercontent.com/65009440/219376886-b52379dd-7619-474c-8437-a52cc1ee6e7e.png)
+
+## Files to Review
 
 * [MainWindow.xaml](./CS/CustomAppointmentFlyoutExample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/CustomAppointmentFlyoutExample/MainWindow.xaml))
-<!-- default file list end -->
+* [MainWindow.xaml.cs](./CS/CustomAppointmentFlyoutExample/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/CustomAppointmentFlyoutExample/MainWindow.xaml.vb))
 
-# How to customize the appointment flyout or tooltip
+## Documentation
 
-SchedulerControl can display additional information for appointments when the mouse pointer hovers over them. For this, it uses either the corresponding FlyoutControl or ToolTip elements. To define which element should be used for this purpose, use the [ToolTipMode](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.ToolTipMode) property.
-
-To customize the appearance of this **FlyoutControl** or **ToolTip** element, define a custom DataTemplte in the [FlyoutContentTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.FlyoutContentTemplate) or [ToolTipContentTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Scheduling.SchedulerControl.ToolTipContentTemplate) property respectively. This example illustrates how to do this.
-
-
-<br><img src="https://raw.githubusercontent.com/DevExpress-Examples/how-to-customize-the-appointment-flyout-t584389/19.2.3+/media/T584389.gif">
+* [Appointment Flyout and ToolTip](https://docs.devexpress.com/WPF/119798/controls-and-libraries/scheduler/visual-elements/appointment-flyout)
+* [Custom Fields](https://docs.devexpress.com/WPF/119962/controls-and-libraries/scheduler/data-binding/custom-fields)
