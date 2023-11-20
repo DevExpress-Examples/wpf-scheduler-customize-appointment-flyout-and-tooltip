@@ -6,9 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduling"
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
-    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxschv="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/visual"
     xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/themekeys"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
     Height="500"
     Width="900"
@@ -62,10 +62,11 @@
                               ItemsSource="{dxe:EnumItemsSource EnumType=dxsch:ToolTipMode}"
                               EditValue="{Binding ElementName=scheduler, Path=ToolTipMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
-
+        
         <dxsch:SchedulerControl x:Name="scheduler"
                                 ToolTipContentTemplate="{StaticResource TooltipTemplate}"
                                 FlyoutContentTemplate="{StaticResource  FlyoutTemplate}" Grid.Row="1"/>
+        
     </Grid>
 
 </Window>
