@@ -19,7 +19,7 @@ To customize the appearance of this **FlyoutControl** or **ToolTip** element, de
 
 <br><img src="https://raw.githubusercontent.com/DevExpress-Examples/how-to-customize-the-appointment-flyout-t584389/19.2.3+/media/T584389.gif">
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-scheduler-customize-appointment-flyout-and-tooltip&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-scheduler-customize-appointment-flyout-and-tooltip&~~~was_helpful=no)
 
